@@ -13,23 +13,16 @@ function getComputerChoice() {  // randomizing between rock, paper and scissors 
 function getPlayerChoice() {    //getting the user's input, formatting and validating it
     playerChoice=prompt("What is your choice?").toLowerCase();
     let validation = validateInput(playerChoice);
-    if (validation==true) {
-        return "your choice is " + playerChoice;
-    }   else {
-        playerChoice=prompt(playerChoice + " is not valid. Please try again").toLowerCase();
-        return "your choice is " + playerChoice;   
+    while (validation==false) {
+        playerChoice=prompt(playerChoice + " is not valid. Please try again").toLowerCase(); 
+        validation= validateInput(playerChoice)  
     }
+    return "your choice is " + playerChoice;  
 }
-
-
-
+ 
 function validateInput (playerInput) {  // check whether the input entered by the user is valid
-    if (choices.includes(playerInput)) {
-        return true;
-    }   else {
-        return false;
+    return choices.includes(playerInput);
     }
-}
 
 
 function playRound(computerChoice, playerChoice) {     // playing a round of rock paper scissors
