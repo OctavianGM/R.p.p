@@ -26,38 +26,77 @@ function validateInput (playerInput) {  // check whether the input entered by th
 
 
 function playRound(computerChoice, playerChoice) {     // playing a round of rock paper scissors
-
+   
     if (computerChoice===playerChoice) {
-        return "Draw";
+        console.log ("Draw");
     }   else if (
         (computerChoice==="rock" && playerChoice==="paper") ||
         (computerChoice==="paper" && playerChoice==="scissors") ||
         (computerChoice==="scissors" && playerChoice==="rock")
         ) {
         playerScore++;
-        return "Player Wins";
+        console.log("Player Wins");
     }    else {
         computerScore++
-        return "Computer Wins"
+        console.log ("Computer Wins");
         }
-}
+    
+        if (playerScore ===5) {
+            document.getElementById("winner").innerHTML="Player won the game";
+            playerScore=0;
+            computerScore=0;
+            return;
+        }
+        if (computerScore ===5) {
+            document.getElementById("winner").innerHTML="Computer won the game";
+            playerScore=0;
+            computerScore=0;
+            return;
+        }
 
-    function game () {  // running a game composed of 5 playRounds
-        for (let i=0; i<5; i++) {    
-            getPlayerChoice()
-            getComputerChoice()
-            playRound(computerChoice, playerChoice)
-            console.log ("player picks " + playerChoice + 
-            " and computer picks " + computerChoice )
-            console.log ("Player score is " + playerScore + 
-            " and computer score is " + computerScore)
-        }
-        if (computerScore>playerScore) {
-            return "Computer wins the game!";
-        }   else if (computerScore<playerScore) {
-            return "Player wins the game!"; 
-        }
-            else {
-            return "It's a tie, play again?"
-        }
-}
+document.getElementById("playerScore").innerHTML="Player score is " + playerScore;
+document.getElementById("computerScore").innerHTML="Computer score is " + computerScore;
+
+
+    }
+
+
+
+
+document.getElementById("rock").addEventListener("click",function (){
+    computerChoice=getComputerChoice();
+    playerChoice= "rock";
+    playRound(computerChoice,playerChoice);
+});
+
+document.getElementById("paper").addEventListener("click", function(){
+    computerChoice=getComputerChoice();
+    playerChoice="paper";
+    playRound(computerChoice,playerChoice);
+});
+
+document.getElementById("scissors").addEventListener("click",function(){
+    computerChoice=getComputerChoice()
+    playerChoice="scissors";
+    playRound(computerChoice,playerChoice);
+});
+
+//     function game () {  // running a game composed of 5 playRounds
+//         for (let i=0; i<5; i++) {    
+//             getPlayerChoice()
+//             getComputerChoice()
+//             playRound(computerChoice, playerChoice)
+//             console.log ("player picks " + playerChoice + 
+//             " and computer picks " + computerChoice )
+//             console.log ("Player score is " + playerScore + 
+//             " and computer score is " + computerScore)
+//         }
+//         if (computerScore>playerScore) {
+//             return "Computer wins the game!";
+//         }   else if (computerScore<playerScore) {
+//             return "Player wins the game!"; 
+//         }
+//             else {
+//             return "It's a tie, play again?"
+//         }
+// }
