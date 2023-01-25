@@ -28,17 +28,17 @@ function validateInput (playerInput) {  // check whether the input entered by th
 function playRound(computerChoice, playerChoice) {     // playing a round of rock paper scissors
    
     if (computerChoice===playerChoice) {
-        console.log ("Draw");
+        alert ("Draw");
     }   else if (
         (computerChoice==="rock" && playerChoice==="paper") ||
         (computerChoice==="paper" && playerChoice==="scissors") ||
         (computerChoice==="scissors" && playerChoice==="rock")
         ) {
         playerScore++;
-        console.log("Player Wins");
+        alert("Player Wins");
     }    else {
         computerScore++
-        console.log ("Computer Wins");
+        alert ("Computer Wins");
         }
     
         if (playerScore ===5) {
@@ -56,13 +56,7 @@ function playRound(computerChoice, playerChoice) {     // playing a round of roc
 
 document.getElementById("playerScore").innerHTML="Player score is " + playerScore;
 document.getElementById("computerScore").innerHTML="Computer score is " + computerScore;
-
-
     }
-
-
-
-
 document.getElementById("rock").addEventListener("click",function (){
     computerChoice=getComputerChoice();
     playerChoice= "rock";
