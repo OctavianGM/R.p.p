@@ -3,6 +3,7 @@ let computerChoice=0;
 let playerChoice =0;
 let playerScore=0;
 let computerScore=0;
+let roundResult;
 
 function getComputerChoice() {  // randomizing between rock, paper and scissors and storing the value in computerChoice
 
@@ -10,52 +11,55 @@ function getComputerChoice() {  // randomizing between rock, paper and scissors 
     return computerChoice;
 }
 
-function getPlayerChoice() {    //getting the user's input, formatting and validating it
-    playerChoice=prompt("What is your choice?").toLowerCase();
-    let validation = validateInput(playerChoice);
-    while (validation==false) {
-        playerChoice=prompt(playerChoice + " is not valid. Please try again").toLowerCase(); 
-        validation= validateInput(playerChoice)  
-    }
-    return "your choice is " + playerChoice;  
-}
+// function getPlayerChoice() {    //getting the user's input, formatting and validating it
+//     playerChoice=prompt("What is your choice?").toLowerCase();
+//     let validation = validateInput(playerChoice);
+//     while (validation==false) {
+//         playerChoice=prompt(playerChoice + " is not valid. Please try again").toLowerCase(); 
+//         validation= validateInput(playerChoice)  
+//     }
+//     return "your choice is " + playerChoice;  
+// }
  
-function validateInput (playerInput) {  // check whether the input entered by the user is valid
-    return choices.includes(playerInput);
-    }
+// function validateInput (playerInput) {  // check whether the input entered by the user is valid
+//     return choices.includes(playerInput);
+//     }
 
 
 function playRound(computerChoice, playerChoice) {     // playing a round of rock paper scissors
-   
     if (computerChoice===playerChoice) {
-        alert ("Draw");
+        roundWinner= "Draw";
     }   else if (
         (computerChoice==="rock" && playerChoice==="paper") ||
         (computerChoice==="paper" && playerChoice==="scissors") ||
         (computerChoice==="scissors" && playerChoice==="rock")
         ) {
         playerScore++;
-        alert("Player Wins");
+        roundWinner="Player Wins";
     }    else {
         computerScore++
-        alert ("Computer Wins");
+        roundWinner="Computer Wins";
         }
     
         if (playerScore ===5) {
-            document.getElementById("winner").innerHTML="Player won the game";
+            alert("Player won the game");
             playerScore=0;
             computerScore=0;
+            roundWinner="";
             return;
         }
         if (computerScore ===5) {
-            document.getElementById("winner").innerHTML="Computer won the game";
+            alert("Computer won the game");
             playerScore=0;
             computerScore=0;
+            roundWinner="";
             return;
         }
 
 document.getElementById("playerScore").innerHTML="Player score is " + playerScore;
 document.getElementById("computerScore").innerHTML="Computer score is " + computerScore;
+document.getElementById("computerContainer").innerHTML=roundWinner;
+
     }
 document.getElementById("rock").addEventListener("click",function (){
     computerChoice=getComputerChoice();

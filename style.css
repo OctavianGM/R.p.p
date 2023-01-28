@@ -4,7 +4,7 @@ body {
 }
 
 
-.buttons-container {
+.buttonsContainer {
 display:flex;
 justify-content:center;
 align-items:center;
@@ -15,10 +15,20 @@ border:5px solid black;
 
 .score-table {
     display:flex;
+    flex-direction: column;
     gap:10px;
     justify-content:center;
-    align-items:flex-end;
+    align-items:center;
     height:200px;
     background-color: aqua;
 
+}
+
+
+.computerContainer {
+    display: flex;
+    height:200px;
+    background-color:grey;
+    justify-content: center;
+    align-items: center;
 }
